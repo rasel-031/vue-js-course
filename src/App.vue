@@ -1,17 +1,16 @@
 <template>
-  <div>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <IceCream />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue';
+import IceCream from './components/IceCream.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    'IceCream': IceCream
   }
 }
 </script>
@@ -21,8 +20,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 </style>
