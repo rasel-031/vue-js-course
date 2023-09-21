@@ -1,16 +1,23 @@
 <template>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <IceCream />
+    <div>
+      <NavBar/>
+      <HomePage/>
+      <hr>
+      <FooterPage/>
+    </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
-import IceCream from './components/IceCream.vue';
+import NavBar from './pages/NavBar.vue';
+import HomePage from './pages/HomePage.vue';
+import FooterPage from './pages/FooterPage.vue';
 
 export default {
   name: 'App',
   components: {
-    'IceCream': IceCream
+    'NavBar': NavBar,
+    'HomePage': HomePage,
+    'FooterPage': FooterPage
   }
 }
 </script>
