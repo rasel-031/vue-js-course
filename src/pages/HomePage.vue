@@ -35,7 +35,15 @@
         </div>
       </div>
       <div>
-          <button class="w-full text-white bg-green py-2 text-sm mobile:text-base hover:bg-strawberry">Place Order</button>
+          <button
+            type="button"
+            class="w-full inline-block rounded bg-green py-2  px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] text-sm mobile:text-base hover:bg-strawberry"
+            data-te-toggle="modal"
+            data-te-target="#leftBottomModal"
+            data-te-ripple-init
+            data-te-ripple-color="light"
+            @click="callSignUpModal"
+          >Place Order</button>
       </div>
     </div>
   </div>
@@ -47,7 +55,7 @@ import IceCreamFlavour from '../components/IceCreamFlavour.vue';
 export default {
     name:"HomePage",
     components:{
-      "IceCreamFlavour": IceCreamFlavour
+      "IceCreamFlavour": IceCreamFlavour,
     },
     data(){
       return{
@@ -63,6 +71,7 @@ export default {
         price: 0,
         cherryURL: require("@/assets/cherry.png"),
         questionURL: require("@/assets/question.png"),
+        showSignUpModal: false
       }
     },
     methods:{
@@ -83,6 +92,10 @@ export default {
         if(this.getFlavour.length === 0){
           this.isVisible = true;
         }
+       },
+       callSignUpModal(){
+        this.showSignUpModal = !this.showSignUpModal;
+        console.log('yes')
        }
     }
 
