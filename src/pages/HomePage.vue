@@ -1,6 +1,6 @@
 <template>
-  <div class="py-44 flex items-center justify-around">
-    <div>
+  <div class="pt-32 flex-col items-center justify-around mobile:flex mobile:items-center  tablet:flex-row tablet:py-44">
+    <div class="flex flex-col items-center">
       <div class="flex justify-center">
         <img v-if = "isVisible" v-bind:src="questionURL" alt="Question image" width="50" height="50"/>
         <img v-else v-bind:src="cherryURL" alt="Cherry image" width="50" height="50"/>
@@ -12,15 +12,15 @@
       </div>
       <!-- add ice-cream flavour components -->
 
-      <div class="w-0 h-0 z-0 pt- border-solid border-l-[60px] border-l-transparent border-r-[60px] border-r-transparent border-t-[150px] border-t-[#d89548]	border-b-[2px] border-b-black rounded"></div>
+      <div class="w-0 h-0 z-0 border-solid border-l-[60px] border-l-transparent border-r-[60px] border-r-transparent border-t-[150px] border-t-[#d89548]	border-b-[2px] border-b-black rounded"></div>
     </div>
-    <div class=" flex flex-col gap-10 justify-around p-8 border">
+    <div class=" flex flex-col gap-10 justify-around p-8 mobile:border-solid mobile:w-[360px]">
       <div>
-        <p class="font-bold">Build your favorite ice-cream!!! (<span class="text-red">{{ getFlavour.length }}</span>)</p>
+        <p class="font-bold text-sm mobile:text-base">Build your favorite ice-cream!!! (<span class="text-red">{{ getFlavour.length }}</span>)</p>
       </div>
       <div class="flex flex-col gap-2">
         <div class="flex justify-between" v-for="item in variants" v-bind:key="item.id">
-          <div class="flex justify-between my-2 w-full">
+          <div class="flex justify-between my-2 w-full text-sm mobile:text-base">
             <p>{{ item.name }}</p>
             <div class="flex gap-4">
               <button class="w-10 h-auto bg-green text-white border-none rounded" @click="addFlavour(item.id)">+</button>
@@ -29,13 +29,13 @@
           </div>
         </div>
         <hr>
-        <div class="flex justify-between font-bold">
+        <div class="flex justify-between font-bold text-sm mobile:text-base">
           <p>Total Price</p>
           <p>{{ price }}.00 Tk</p>
         </div>
       </div>
       <div>
-          <button class="w-full text-white bg-green py-2">Place Order</button>
+          <button class="w-full text-white bg-green py-2 text-sm mobile:text-base hover:bg-strawberry">Place Order</button>
       </div>
     </div>
   </div>
