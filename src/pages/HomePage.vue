@@ -1,5 +1,9 @@
 <template>
-  <div class="pt-32 flex-col items-center justify-around mobile:flex mobile:items-center  tablet:flex-row tablet:py-44">
+  <div>
+    <div v-show="showModal">
+      <UserModal @child-event = "callModal" v-bind:showTranslate ="isTranslate"  />
+    </div>
+  <div class="pt-32 flex-col items-center justify-around mobile:flex mobile:items-center tablet:flex-row tablet:py-44">
     <div class="flex flex-col items-center">
       <div class="flex justify-center">
         <img v-if = "isVisible" v-bind:src="questionURL" alt="Question image" width="50" height="50"/>
@@ -37,25 +41,26 @@
       <div>
           <button
             type="button"
-            class="w-full inline-block rounded bg-green py-2  px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] text-sm mobile:text-base hover:bg-strawberry"
-            data-te-toggle="modal"
-            data-te-target="#leftBottomModal"
-            data-te-ripple-init
-            data-te-ripple-color="light"
-            @click="callSignUpModal"
+            v-bind:class="cursorDisable"
+            class="w-full inline-block rounded bg-green py-2  px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] text-sm mobile:text-base"
+            @click="callModal"
+            v-bind:disabled = "buttonDisable" 
           >Place Order</button>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 import IceCreamFlavour from '../components/IceCreamFlavour.vue';
+import UserModal from '@/components/UserModal.vue';
 
 export default {
     name:"HomePage",
     components:{
       "IceCreamFlavour": IceCreamFlavour,
+      "UserModal": UserModal
     },
     data(){
       return{
@@ -71,7 +76,10 @@ export default {
         price: 0,
         cherryURL: require("@/assets/cherry.png"),
         questionURL: require("@/assets/question.png"),
-        showSignUpModal: false
+        showModal: false,
+        cursorDisable: "cursor-not-allowed",
+        buttonDisable: true,
+        isTranslate: false
       }
     },
     methods:{
@@ -80,6 +88,8 @@ export default {
         //add price
         this.price = this.getFlavour.reduce((accumulator, currentObj) => {return accumulator + currentObj.price}, 0);
         this.isVisible = false;
+        this.cursorDisable = "cursor-pointer hover:bg-strawberry";
+        this.buttonDisable = false;
        },
        removeFlavour(flavourId){
         const index = this.getFlavour.findIndex(item => item.id === flavourId);
@@ -91,11 +101,13 @@ export default {
         //question mark visible
         if(this.getFlavour.length === 0){
           this.isVisible = true;
+          this.cursorDisable = "cursor-not-allowed";
+          this.buttonDisable = true;
         }
        },
-       callSignUpModal(){
-        this.showSignUpModal = !this.showSignUpModal;
-        console.log('yes')
+       callModal(){
+        this.showModal = !this.showModal;
+        this.isTranslate = !this.isTranslate;
        }
     }
 

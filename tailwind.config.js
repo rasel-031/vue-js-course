@@ -15,7 +15,11 @@ module.exports = {
       'green': '#008000',
       'gray': '#808080',
       'white':'#ffff',
-      'black': '#000'
+      'black': '#000',
+      'modal': '#374151',
+      'modal-field': '#4b5563',
+      'blue': '#000080',
+      'light-blue': '#ADD8E6'
     },
     screens: {
       'sm-mobile': '275px',
