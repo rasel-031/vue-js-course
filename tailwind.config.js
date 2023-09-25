@@ -6,7 +6,7 @@ module.exports = {
     colors:{
       transparent: 'transparent',
       current: 'currentColor',
-      'vanila': '#f6d788',
+      'vanilla': '#f6d788',
       'orange':'#ffa500',
       'strawberry':'#f9022b',
       'chocolate': '#411900',

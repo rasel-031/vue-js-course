@@ -20,8 +20,8 @@ export default {
                     return 'bg-orange'; 
                 case 'Chocolate':
                     return 'bg-chocolate';
-                case 'Vanila':
-                    return 'bg-vanila';
+                case 'Vanilla':
+                    return 'bg-vanilla';
                 case 'Lemon':
                     return 'bg-lemon';
                 case 'Strawberry':
