@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full fixed z-50 flex justify-center items-start">
-    <div class="w-[265px] mobile:w-[350px] bg-modal rounded-[10px] py-3 px-5 transition-transform duration-1000 ease-in-out" v-bind:class = "{'transform translate-y-32': showTranslate}">
+    <div class="w-[265px] mobile:w-[350px] bg-modal rounded-[10px] py-3 px-5 transition-all duration-500 ease-in-out transform" v-bind:class = "showTranslate ? 'translate-y-32 opacity-100' : '-translate-y-full opacity-0'">
         <div class="text-white flex justify-between pb-2">
             <p class="font-bold mobile:text-lg">Sign in to our platform</p>
             <button @click="callParentMethod" class="hover:bg-gray px-2 rounded">X</button>

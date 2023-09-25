@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="showModal">
+    <div v-bind:class="showModal ? 'visible': 'invisible'">
       <UserModal @child-event = "callModal" v-bind:showTranslate ="isTranslate"  />
     </div>
   <div class="pt-32 flex-col items-center justify-around mobile:flex mobile:items-center tablet:flex-row tablet:py-44">
@@ -65,7 +65,7 @@ export default {
     data(){
       return{
         variants:[
-          {id:1, name:"Vanila", price:100},
+          {id:1, name:"Vanilla", price:100},
           {id:2, name:"Chocolate", price:120},
           {id:3, name:"Strawberry", price:90},
           {id:4, name:"Orange", price:70},
